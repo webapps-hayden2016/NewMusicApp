@@ -3,4 +3,14 @@
 @{
     ViewBag.Title = "Albums in Genre";
 }
-<h2>Albums in Genre @ViewBag.Genre</h2>
+<h2>Albums in Genre "@ViewBag.Genre"</h2>
+<hr/>
+<div>
+    @foreach (var item in Model)
+    {
+        <div>@item.Title</div>
+    }
+</div>
+<div>
+    <a href="/Genres" class="btn btn-default">Return to List</a>
+</div>

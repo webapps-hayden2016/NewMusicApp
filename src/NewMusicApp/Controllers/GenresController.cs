@@ -41,13 +41,17 @@ namespace NewMusicApp.Controllers
             return View(genre);
         }
 
-        //public IActionResult Listing(int? id)
-        //{
-        //    if(id == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var albums = _context.Albums.
-        //}
+        public IActionResult Listing(int? id)
+        {
+            var genre = _context.Genres.Single(g => g.GenreID == id);
+            ViewBag.Genre = genre.Name;
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var albums = _context.Albums.Where(a => a.GenreID == genre.GenreID).ToList();
+
+            return View(albums);
+        }
     }
 }

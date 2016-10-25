@@ -1,14 +1,21 @@
-﻿@model NewMusicApp.Models.Artist
+﻿@model IEnumerable<NewMusicApp.Models.Album>
 @{
     ViewData["Title"] = "Artist Details";
 }
 <h2>Details</h2>
 <div class="row">
     <label class="col-md-2">Artist Name: </label>
-    <div class="col-md-10">@Html.DisplayFor(Model => Model.Name)</div>
+    <div class="col-md-10">@ViewBag.ArtistName</div>
 </div>
 <div class="row">
     <label class="col-md-2">Artist Biography: </label>
-    <div class="col-md-10">@Html.DisplayFor(Model => Model.Bio)</div>
+    <div class="col-md-10">@ViewBag.ArtistBio</div>
+</div>
+<div class="row">
+    <label class="col-md-2">Albums: </label>
+    @foreach(var item in Model)
+    {
+    <div class="col-md-10">@item.Title</div>
+    }
 </div>
 <div><a href="/Artists" class="btn btn-default" formnovalidate>Return to List</a></div>

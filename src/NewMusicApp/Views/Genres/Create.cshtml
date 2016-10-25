@@ -4,10 +4,11 @@
 }
 
 <h2>Enter a new Genre</h2>
+<hr />
 <div class="form">
     <form asp-action="Create" class="form-horizontal">
         <div class="form-group">
-            <label asp-for="Name" class="col-sm-2">Artist Name: </label>
+            <label asp-for="Name" class="col-sm-2">Genre Name: </label>
             <div class="col-sm-10">
                 <input asp-for="Name" class="form-control" autofocus />
                 <span asp-validation-for="Name" class="text-danger"></span>

@@ -5,8 +5,10 @@
 }
 
 <h2>Genres</h2>
+<hr />
 <p>
     <a asp-controller="Genres" asp-action="Create" class="btn btn-danger">Create New</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-default">Return to Homepage</a>
 </p>
 
 <table class="table">
@@ -17,7 +19,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td><a asp-action="Listing" asp-route-id="@item.GenreID">@Html.DisplayFor(modelItem => item.Name)</a></td>
         </tr>
     }
 </table>

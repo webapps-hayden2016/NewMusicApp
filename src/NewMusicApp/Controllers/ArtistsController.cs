@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NewMusicApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -48,13 +49,44 @@ namespace NewMusicApp.Controllers
                 return NotFound();
             }
             var artist = _context.Artists.Single(a => a.ArtistID == id);
+            var albums = _context.Albums.Where(a => a.ArtistID == artist.ArtistID).ToList();
+
+            ViewBag.ArtistName = artist.Name;
+            ViewBag.ArtistBio = artist.Bio;
 
             if (artist == null)
             {
                 return NotFound();
             }
 
+            return View(albums);
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var artist = _context.Artists.AsNoTracking().Single(m => m.ArtistID == id);
+            if (artist == null)
+            {
+                return NotFound();
+            }
             return View(artist);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Artist artist)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Entry(artist).State = EntityState.Modified;
+                _context.SaveChanges();
+
+            }
+            return RedirectToAction("Index");
         }
     }
 }

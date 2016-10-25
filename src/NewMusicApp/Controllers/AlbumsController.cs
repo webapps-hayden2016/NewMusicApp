@@ -110,56 +110,35 @@ namespace NewMusicApp.Controllers
             return View(album);
         }
 
-        //public IActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var album = _context.Albums.Include(a => a.Artist).Include(a => a.Genre).AsNoTracking().Single(m => m.AlbumID == id);
-        //    if (album == null)
-        //    {
-        //        return NotFound();
-        //    }
+            var album = _context.Albums.Include(a => a.Artist).Include(a => a.Genre).AsNoTracking().Single(m => m.AlbumID == id);
+            if (album == null)
+            {
+                return NotFound();
+            }
 
-        //    ViewBag.Artists = new SelectList(_context.Artists, "ArtistID", "Name");
-        //    ViewBag.Genres = new SelectList(_context.Genres, "GenreID", "Name");
-        //    return View(album);
-        //}
+            ViewBag.Artists = new SelectList(_context.Artists, "ArtistID", "Name");
+            ViewBag.Genres = new SelectList(_context.Genres, "GenreID", "Name");
+            return View(album);
+        }
 
-        //[HttpPost, ActionName("Edit")]
-        //public IActionResult EditPost(int? id, byte[] rowVersion)
-        //{
-        //    if(id == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var album = _context.Albums.Include(a => a.Artist).Include(a => a.Genre).AsNoTracking().Single(m => m.AlbumID == id);
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Albums.Update(album);
-        //        _context.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
+        [HttpPost]
+        public IActionResult Edit(Album album)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Entry(album).State = EntityState.Modified;
+                _context.SaveChanges();
 
-        //    ViewBag.Artists = new SelectList(_context.Artists, "ArtistID", "Name");
-        //    ViewBag.Genres = new SelectList(_context.Genres, "GenreID", "Name");
-        //    return View(album);
-        //}
-
-        //[HttpPost]
-        //public IActionResult Edit(Album album)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Entry(album).State = EntityState.Modified;
-                
-        //        }
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(album);
-        //}
+            }
+            return RedirectToAction("Index");
+        }
 
         public IActionResult Delete(int? id)
         {

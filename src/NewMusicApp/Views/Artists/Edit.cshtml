@@ -1,0 +1,28 @@
+﻿@model NewMusicApp.Models.Artist
+@{
+    ViewData["Title"] = "Edit Artist";
+}
+<h2>Edit</h2>
+<hr />
+<div class="form">
+    <form asp-action="Edit" class="form-horizontal">
+        @Html.HiddenFor(m => m.ArtistID)
+        <div class="from-group">
+            <label asp-for="Name" class="col-sm-2">Artist Name: </label>
+            <div class="col-sm-10">
+                <input asp-for="Name" class="form-control" autofocus />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <label asp-for="Bio" class="col-sm-2">Artist Bio: </label>
+            <div class="col-sm-10">
+                <input asp-for="Bio" class="form-control" autofocus />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="btn btn-success" />
+            </div>
+        </div>
+    </form>
+</div>
+<div><a href="/Artists" class="btn btn-default" formnovalidate>Return to List</a></div>

@@ -3,8 +3,10 @@
     ViewData["Title"] = "Edit Album";
 }
 <h2>Edit</h2>
+<hr />
 <div class="form">
     <form asp-action="Edit" class="form-horizontal">
+        @Html.HiddenFor(m => m.AlbumID)
         <div class="from-group">
             <label asp-for="Title" class="col-sm-2">Album Name: </label>
             <div class="col-sm-10">
@@ -35,10 +37,3 @@
     </form>
 </div>
 <div><a href="/Albums" class="btn btn-default" formnovalidate>Return to List</a></div>
-
-@using (Html.BeginForm("Edit", "Home", FormMethod.Post,
-                new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.HiddenFor(m => m.AlbumID)
-    //Other code … … …
-}
