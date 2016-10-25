@@ -8,9 +8,10 @@ using NewMusicApp.Models;
 namespace NewMusicApp.Migrations
 {
     [DbContext(typeof(MusicDbContext))]
-    partial class MusicDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161025045619_changedModels")]
+    partial class changedModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")

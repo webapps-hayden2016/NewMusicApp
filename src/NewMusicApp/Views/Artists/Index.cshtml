@@ -1,0 +1,29 @@
+﻿@model IEnumerable<NewMusicApp.Models.Artist>
+
+@{
+    ViewBag.Title = "Artists";
+}
+
+<h2>Artists</h2>
+
+<p>
+    <a asp-controller="Artists" asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Artist Name</th>
+        <th>Biography</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.Bio)</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ArtistID">Details</a>
+            </td>
+        </tr>
+    }
+</table>

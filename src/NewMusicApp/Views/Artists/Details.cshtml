@@ -1,0 +1,14 @@
+﻿@model NewMusicApp.Models.Artist
+@{
+    ViewData["Title"] = "Artist Details";
+}
+<h2>Details</h2>
+<div class="row">
+    <label class="col-md-2">Artist Name: </label>
+    <div class="col-md-10">@Html.DisplayFor(Model => Model.Name)</div>
+</div>
+<div class="row">
+    <label class="col-md-2">Artist Biography: </label>
+    <div class="col-md-10">@Html.DisplayFor(Model => Model.Bio)</div>
+</div>
+<div><a href="/Artists" class="btn btn-default" formnovalidate>Return to List</a></div>

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<NewMusicApp.Models.Genre>
+
+@{
+    ViewBag.Title = "Genres";
+}
+
+<h2>Genres</h2>
+<p>
+    <a asp-controller="Genres" asp-action="Create" class="btn btn-danger">Create New</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+        </tr>
+    }
+</table>

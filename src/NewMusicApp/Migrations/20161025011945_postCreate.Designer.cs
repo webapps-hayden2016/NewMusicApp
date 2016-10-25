@@ -8,9 +8,10 @@ using NewMusicApp.Models;
 namespace NewMusicApp.Migrations
 {
     [DbContext(typeof(MusicDbContext))]
-    partial class MusicDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161025011945_postCreate")]
+    partial class postCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -27,8 +28,7 @@ namespace NewMusicApp.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.Property<string>("Title")
-                        .IsRequired();
+                    b.Property<string>("Title");
 
                     b.HasKey("AlbumID");
 
@@ -46,8 +46,7 @@ namespace NewMusicApp.Migrations
 
                     b.Property<string>("Bio");
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<string>("Name");
 
                     b.HasKey("ArtistID");
 
@@ -59,9 +58,7 @@ namespace NewMusicApp.Migrations
                     b.Property<int>("GenreID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(20);
+                    b.Property<string>("Name");
 
                     b.HasKey("GenreID");
 

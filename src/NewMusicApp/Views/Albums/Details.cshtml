@@ -1,0 +1,26 @@
+﻿@model NewMusicApp.Models.Album
+@{
+    ViewData["Title"] = "Album Details";
+}
+<h2>Details</h2>
+<div class="row">
+    <label class="col-md-2">Title: </label>
+    <div class="col-md-10">@Html.DisplayFor(Model => Model.Title)</div>
+</div>
+<div class="row">
+    <label class="col-md-2">Artist: </label>
+    <div class="col-md-10">@Html.DisplayFor(Model => Model.Artist.Name)</div>
+</div>
+<div class="row">
+    <label class="col-md-2">Artist's Bio: </label>
+    <div class="col-md-10">@Html.DisplayFor(Model => Model.Artist.Bio)</div>
+</div>
+<div class="row">
+    <label class="col-md-2">Genre: </label>
+    <div class="col-md-10">@Html.DisplayFor(Model => Model.Genre.Name)</div>
+</div>
+<div class="row">
+    <label class="col-md-2">Price: </label>
+    <div class="col-md-10">$@Html.DisplayFor(Model => Model.Price)</div>
+</div>
+<div><a href="/Albums" class="btn btn-default" formnovalidate>Return to List</a></div>
