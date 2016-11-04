@@ -24,5 +24,7 @@ namespace NewMusicApp.Models
 
         public int GenreID { get; set; }
         public Genre Genre { get; set; }
+
+        public int Likes { get; set; }
     }
 }

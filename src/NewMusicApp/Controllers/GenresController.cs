@@ -32,7 +32,14 @@ namespace NewMusicApp.Controllers
         [HttpPost]
         public IActionResult Create(Genre genre)
         {
-            if (ModelState.IsValid)
+            var genreCheck = _context.Genres.Any(g => g.Name == genre.Name);
+
+            if(genreCheck == true)
+            {
+                return View();
+            }
+
+            if (ModelState.IsValid && genreCheck == false)
             {
                 _context.Genres.Add(genre);
                 _context.SaveChanges();

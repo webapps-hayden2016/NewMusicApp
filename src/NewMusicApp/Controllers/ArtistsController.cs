@@ -33,7 +33,12 @@ namespace NewMusicApp.Controllers
         [HttpPost]
         public IActionResult Create(Artist artist)
         {
-            if (ModelState.IsValid)
+            var artistCheck = _context.Artists.Any(a => a.Name == artist.Name);
+            if(artistCheck == true)
+            {
+                 return View();
+            }
+            if (ModelState.IsValid && artistCheck == false)
             {
                 _context.Artists.Add(artist);
                 _context.SaveChanges();
@@ -70,6 +75,8 @@ namespace NewMusicApp.Controllers
             }
 
             var artist = _context.Artists.AsNoTracking().Single(m => m.ArtistID == id);
+            ViewBag.ArtistName = artist.Name;
+
             if (artist == null)
             {
                 return NotFound();

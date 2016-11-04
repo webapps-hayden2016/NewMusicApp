@@ -12,19 +12,33 @@
                 <input asp-for="Title" class="form-control" autofocus />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
+        </div>
+        <div class="from-group">
             <label asp-for="ArtistID" class="col-sm-2">Artist: </label>
             <div class="col-sm-10">
                 <select class="form-control valid" asp-for="ArtistID" asp-items="ViewBag.Artists">
                     <option value="">-- Select Artist --</option>
-                </select>
+                </select>    
+                <div>
+                    <input name="artistName" placeholder="Enter a new Artist" class="form-control" autofocus />
+                    @*<span asp-validation-for="Artist.Name" class="text-danger"></span>*@
+                </div>
             </div>
+        </div>
+        <div class="from-group">
             <label asp-for="GenreID" class="col-sm-2">Genre: </label>
             <div class="col-sm-10">
-                <select class="form-control valid" asp-for="GenreID"asp-items="ViewBag.Genre">
+                <select class="form-control valid" asp-for="GenreID" asp-items="ViewBag.Genre">
                     <option value="">-- Select Genre --</option>
                 </select>
+                <div>
+                    <input name="genreName" placeholder="Enter a new Genre" class="form-control" autofocus />
+                    @*<span asp-validation-for="Genre.Name" class="text-danger"></span>*@
+                </div>
             </div>
-            <label asp-for="Price" class="col-sm-2">Price: $</label>
+        </div>
+        <div class="from-group">
+            <label asp-for="Price" class="col-sm-2">Price: </label>
             <div class="col-sm-10">
                 <input asp-for="Price" class="form-control" autofocus />
                 <span asp-validation-for="Price" class="text-danger"></span>

@@ -4,6 +4,42 @@
 }
 <h2>Delete</h2>
 <hr />
+
+@*<div class="form">
+    <form asp-action="Edit" class="form-horizontal">
+        @Html.HiddenFor(m => m.AlbumID)
+        <div class="from-group">
+            <label class="col-sm-2">Album Name: </label>
+            <div class="col-sm-10">
+                <div>@Html.DisplayFor(Model => Model.Title)</div>
+            </div>
+            <label class="col-sm-2">Artist: </label>
+            <div class="col-sm-10">
+                <div>@Html.DisplayFor(Model => Model.Artist.Name)</div>
+            </div>
+            <label class="col-sm-2">Artist Bio: </label>
+            <div class="col-sm-10">
+                <div>@Html.DisplayFor(Model => Model.Artist.Bio)</div>
+            </div>
+            <label class="col-sm-2">Genre: </label>
+            <div class="col-sm-10">
+                <div>@Html.DisplayFor(Model => Model.Genre.Name)</div>
+            </div>
+            <label class="col-sm-2">Price: $</label>
+            <div class="col-sm-10">
+                <div>$@Html.DisplayFor(Model => Model.Price)</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="btn btn-success" />
+            </div>
+        </div>
+    </form>
+</div>
+<div><a href="/Albums" class="btn btn-default" formnovalidate>Return to List</a></div>*@
+
+
 <div class="row">
     <label class="col-md-2">Title: </label>
     <div class="col-md-10">@Html.DisplayFor(Model => Model.Title)</div>
@@ -26,6 +62,6 @@
 </div>
 <h3>Are you sure that you want to delete album "@Model.Title"?</h3>
 <div>
-    <input type="submit" value="Delete Album" class="btn btn-danger"/>
+    <a asp-action="Delete" class="btn btn-danger" formnovalidate>Delete Album</a>
     <a href="/Albums" class="btn btn-default" formnovalidate>Return to List</a>
 </div>
