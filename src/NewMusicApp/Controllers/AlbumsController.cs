@@ -81,6 +81,7 @@ namespace NewMusicApp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Album album, string artistName, string genreName)
         {
             ViewBag.Genre = new SelectList(_context.Genres, "GenreID", "Name");
@@ -187,6 +188,7 @@ namespace NewMusicApp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(Album album)
         {
             if (ModelState.IsValid)

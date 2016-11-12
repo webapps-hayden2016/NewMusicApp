@@ -1,0 +1,28 @@
+﻿@model IEnumerable<NewMusicApp.Models.Playlist>
+
+@{
+    ViewBag.Title = "Playlists";
+}
+<h2>Playlists for user @User.Identity.Name @*(member since @User.Identity.D)*@</h2>
+<hr />
+<p>
+    <a asp-controller="Playlists" asp-action="Create" class="btn btn-warning">Create New</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-default">Return to Homepage</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>
+                <a asp-action="Rename" asp-route-id="@item.PlaylistID" class="btn btn-default">Rename</a>
+                <a asp-action="Delete" asp-route-id="@item.PlaylistID" class="btn btn-default">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

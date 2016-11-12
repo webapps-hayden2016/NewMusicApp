@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Edit Album";
 }
+@Html.AntiForgeryToken()
+
 <h2>"@ViewBag.AlbumTitle" - Edit</h2>
 <hr />
 <div class="form">

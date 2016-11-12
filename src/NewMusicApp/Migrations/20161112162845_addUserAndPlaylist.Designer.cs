@@ -8,9 +8,10 @@ using NewMusicApp.Models;
 namespace NewMusicApp.Migrations
 {
     [DbContext(typeof(MusicDbContext))]
-    partial class MusicDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161112162845_addUserAndPlaylist")]
+    partial class addUserAndPlaylist
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -148,21 +149,6 @@ namespace NewMusicApp.Migrations
                     b.ToTable("Albums");
                 });
 
-            modelBuilder.Entity("NewMusicApp.Models.AlbumPlaylist", b =>
-                {
-                    b.Property<int>("AlbumID");
-
-                    b.Property<int>("PlaylistID");
-
-                    b.HasKey("AlbumID", "PlaylistID");
-
-                    b.HasIndex("AlbumID");
-
-                    b.HasIndex("PlaylistID");
-
-                    b.ToTable("AlbumPlaylists");
-                });
-
             modelBuilder.Entity("NewMusicApp.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id");
@@ -171,8 +157,6 @@ namespace NewMusicApp.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
-
-                    b.Property<DateTime>("DateJoined");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
@@ -243,20 +227,6 @@ namespace NewMusicApp.Migrations
                     b.ToTable("Genres");
                 });
 
-            modelBuilder.Entity("NewMusicApp.Models.Playlist", b =>
-                {
-                    b.Property<int>("PlaylistID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("OwnerID");
-
-                    b.HasKey("PlaylistID");
-
-                    b.ToTable("Playlists");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
@@ -304,19 +274,6 @@ namespace NewMusicApp.Migrations
                     b.HasOne("NewMusicApp.Models.Genre", "Genre")
                         .WithMany()
                         .HasForeignKey("GenreID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("NewMusicApp.Models.AlbumPlaylist", b =>
-                {
-                    b.HasOne("NewMusicApp.Models.Album", "Album")
-                        .WithMany("AlbumPlaylists")
-                        .HasForeignKey("AlbumID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("NewMusicApp.Models.Playlist", "Playlist")
-                        .WithMany("AlbumPlaylists")
-                        .HasForeignKey("PlaylistID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

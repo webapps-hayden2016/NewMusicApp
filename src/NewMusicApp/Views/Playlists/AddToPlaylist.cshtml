@@ -1,0 +1,24 @@
+﻿@model NewMusicApp.Models.AlbumPlaylist
+@{
+    ViewData["Title"] = "Add to Playlist";
+}
+@Html.AntiForgeryToken()
+
+<h2>Select Playlist for Album "@Model.Album.Title"</h2>
+<hr />
+<div>
+    <form asp-action="AddToPlaylist">
+        <div class="from-group">
+            <label asp-for="PlaylistID" class="col-sm-2">Artist: </label>
+            <div class="col-sm-10">
+                <select class="form-control valid" asp-for="PlaylistID" asp-items="ViewBag.Playlists">
+                    <option value="">-- Select Artist --</option>
+                </select>
+                <div>
+                    <input name="artistName" placeholder="Enter a new Artist" class="form-control" autofocus />
+                    @*<span asp-validation-for="Artist.Name" class="text-danger"></span>*@
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
