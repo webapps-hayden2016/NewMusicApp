@@ -131,7 +131,8 @@ namespace NewMusicApp.Controllers
 
             }
             if (ModelState.IsValid)
-            {   
+            {
+                album.AlbumPlaylists = new List<AlbumPlaylist>();
                 _context.Albums.Add(album);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
@@ -159,6 +160,27 @@ namespace NewMusicApp.Controllers
                 .Single(m => m.AlbumID == id);
 
             ViewBag.AlbumTitle = album.Title;
+
+            var album1 = _context.Albums.First(a => a.ArtistID == album.ArtistID && a.Title != album.Title);
+            var album2 = _context.Albums.Last(a => a.ArtistID == album.ArtistID && a.Title != album.Title);
+
+            if(album1 != null)
+            {
+                ViewBag.Recommended1 = album1.Title;
+            }
+            else
+            {
+                ViewBag.Recommended1 = "";
+            }
+            if (album2 != null)
+            {
+                ViewBag.Recommended2 = album2.Title;
+            }
+            else
+            {
+                ViewBag.Recommended2 = "";
+            }
+            
 
             if (album == null)
             {
@@ -194,6 +216,7 @@ namespace NewMusicApp.Controllers
             if (ModelState.IsValid)
             {
                 _context.Entry(album).State = EntityState.Modified;
+                _context.Entry(album).Property(a => a.AlbumPlaylists).IsModified = false;
                 _context.SaveChanges();
 
             }

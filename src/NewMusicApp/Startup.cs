@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using NewMusicApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace NewMusicApp
 {
@@ -57,10 +58,11 @@ namespace NewMusicApp
                 options.Password.RequireLowercase = false;
 
                 // Cookie settings
-                options.Cookies.ApplicationCookie.LoginPath = "/Account/LogIn";
-                options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOff";
+                options.Cookies.ApplicationCookie.LoginPath = "/Accounts/Login";
+                options.Cookies.ApplicationCookie.LogoutPath = "/Accounts/LogOff";
                 //options.AutomaticChallenge = true;
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -93,6 +95,7 @@ namespace NewMusicApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }

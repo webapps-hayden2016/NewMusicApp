@@ -1,0 +1,16 @@
+﻿@model IEnumerable<NewMusicApp.Models.Album>
+
+@{
+    ViewBag.Title = "Albums in Playlist";
+}
+<h2>Albums in Playlist "@ViewBag.Playlist"</h2>
+<hr />
+<div>
+    @foreach (var item in Model)
+    {
+        <div>@item.Title</div>
+    }
+</div>
+<div>
+    <a href="/Playlists" class="btn btn-default">Return to List</a>
+</div>

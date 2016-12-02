@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Playlists";
 }
-<h2>Playlists for user @User.Identity.Name @*(member since @User.Identity.D)*@</h2>
+<h2>Playlists for user @User.Identity.Name (user since @ViewBag.Date)</h2>
 <hr />
 <p>
     <a asp-controller="Playlists" asp-action="Create" class="btn btn-warning">Create New</a>
@@ -18,7 +18,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td><a asp-action="Listing" asp-route-id="@item.PlaylistID">@Html.DisplayFor(modelItem => item.Name)</a></td>
             <td>
                 <a asp-action="Rename" asp-route-id="@item.PlaylistID" class="btn btn-default">Rename</a>
                 <a asp-action="Delete" asp-route-id="@item.PlaylistID" class="btn btn-default">Delete</a>
