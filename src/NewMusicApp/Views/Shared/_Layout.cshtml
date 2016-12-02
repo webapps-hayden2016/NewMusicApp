@@ -35,6 +35,28 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+                   <form asp-controller="Accounts" asp-action="LogOff" class="navbar-right">
+                       <ul class="nav navbar-nav navbar-right">
+                           <li>
+                               <a href="/Home/Index">Hello @User.Identity.Name</a>
+                           </li>
+                           <li>
+                               <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
+                           </li>
+                       </ul>
+                   </form>
+                }else{ 
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/Accounts/Register">Register</a>
+                        </li>
+                        <li>
+                            <a href="/Accounts/Login">Log in</a>
+                        </li>
+                    </ul>
+                 }
             </div>
         </div>
     </div>
